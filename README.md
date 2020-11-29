@@ -9,7 +9,7 @@
 
 ### Getting started with the project
 
-1. Run `node server2.js` to start the web application on `localhost:8080`
+1. Run `node server2.js` to start the application on `localhost:3333`
 
 <h2>📱 Minhas redes sociais:</h2>
 
