@@ -1,0 +1,86 @@
+Para utilizar no GraphIQL
+
+1° Query 
+
+query getSingleCourse($courseID: Int!) {
+  course(id: $courseID) {
+    title
+    author
+    description
+    topic
+    url
+  }
+}
+
+QUERY VARIABLES: 
+
+{"courseID": 2}
+
+************************************************
+
+2° Query
+
+query getCoursesForTopic($courseTopic: String!) {
+  courses(topic: $courseTopic) {
+    title
+    author
+    description
+    topic
+    url
+  }
+}
+
+QUERY VARIABLES:
+
+{"courseTopic": "Node.js"}
+
+******************************************************
+
+3° Query 
+
+query getCourseWithFragments($courseID: Int!, $courseID2: Int!) {
+  course1: course(id: $courseID) {
+    ...courseFields
+  }
+  
+  course2: course(id: $courseID2) {
+    ...courseFields
+	}
+}
+
+fragment courseFields on Course {
+    title,
+    author,
+    description,
+    topic
+    url
+}
+
+
+
+QUERY VARIABLES:
+
+{"courseID": 1, "courseID2": 2}
+
+**************************************************
+
+4° Mutation 
+
+mutation updateCourseTopic($id: Int!, $topic: String!) {
+  updateCourseTopic(id: $id, topic: $topic) {
+    ...courseFields
+  }
+}
+
+fragment courseFields on Course {
+    title,
+    author,
+    description,
+    topic
+    url
+}
+
+
+QUERY VARIABLES:
+
+{"id": 1, "topic": "JavaScript"}
